@@ -28,6 +28,15 @@ struct list{
     address last;
 };
 
+void createListChild(list &L);
+bool listChildIsEmpty(list L);
+address findChildElmt(list L, string X);
+void createChildElmt(address &P, string ID, string namaBarang, int stockBarang, int hargaBarang);
+void insertLastChild(list &L, address P);
+void deleteAfterChild(list &L, address &P);
+void printChildList(list L);
+void insertAfterChild(list &L, address prec, address P);
+
 
 
 #endif // CHILD_H_INCLUDED
