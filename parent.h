@@ -29,6 +29,7 @@ struct list{
 };
 
 void buatlist(list &l);
+void createElement(address &p, string nama, int id, float saldo);
 bool listkosong(list l);
 void tambahdatapertama(list &l,address p);
 void hapusdataterakhir(list &l,address &p);
