@@ -15,25 +15,27 @@ struct pembeli{
     float saldo;
 };
 
-typedef struct elmList *address;
+typedef pembeli infotype_parent;
+typedef struct elmlist_parent *address_parent;
 
-struct elmList{
-    pembeli info;
-    address next;
-    address prev;
+struct elmlist_parent {
+    infotype_parent info;
+    List_relasi child;
+    address_parent next, prev;
 };
 
-struct list{
-    address first;
-    address last;
-};
+struct List_parent {
+    address_parent first;
+    address_parent last;
+}; 
 
-void buatlist(list &l);
-void createElement(address &p, string nama, int id, float saldo);
-bool listkosong(list l);
-void tambahdatapertama(list &l,address p);
-void hapusdataterakhir(list &l,address &p);
-void tambahdatasetelah(list &l,address p,address prec);
-void tampildata(list l);
+void createList(List_parent &L);
+void createParentElmt(address_parent &P, string costumerID, string costumerName, int saldo);
+bool listParentEmpty(List_parent L);
+void insertAfterParent(List_parent &L, address_parent P,address_parent Prec);
+void insertFirstParent(List_parent &L, address_parent P);
+void deleteLastParent(List_parent &L, address_parent &P);
+void printInfo(List_parent L);
+address_parent findElmParent(List_parent L, string X);
 
 #endif // PARENT_H_INCLUDED
