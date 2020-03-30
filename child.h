@@ -1,41 +1,46 @@
 #ifndef CHILD_H_INCLUDED
 #define CHILD_H_INCLUDED
 
+
+#include <iostream>
+using namespace std;
+
 #define info(P) P->info
 #define next(P) P->next
 #define prev(P) P->prev
 #define first(L) L.first
 #define last(L) L.last
-using namespace std;
 
 struct barang {
     string id_Barang;
     string nama_Barang;
     int stock_Barang;
-    int harga_barang
+    int harga_Barang;
 };
 
-typedef struct barang infotype;
- struct elmlist *address;
+typedef barang infotype_child;
+typedef struct elmlist_child *address_child;
 
-struct elmlist{
-    infotype info;
-    address next;
+struct elmlist_child{
+    infotype_child info;
+    address_child next;
+    address_child prev;
 };
 
-struct list{
-    address first;
-    address last;
+struct List_child{
+    address_child first;
+    address_child last;
 };
 
-void createListChild(list &L);
-bool listChildIsEmpty(list L);
-address findChildElmt(list L, string X);
-void createChildElmt(address &P, string ID, string namaBarang, int stockBarang, int hargaBarang);
-void insertLastChild(list &L, address P);
-void deleteAfterChild(list &L, address &P);
-void printChildList(list L);
-void insertAfterChild(list &L, address prec, address P);
+
+
+bool listChildIsEmpty(List_child L);
+void createListChild(List_child &L);
+void createChildElmt(address_child &P, string ID, string namaBarang, int stockBarang, int hargaBarang);
+address_child findElm(List_child L, infotype_child x);
+void insertLastChild(List_child &L, address_child P);
+void printInfo(List_child L);
+
 
 
 
