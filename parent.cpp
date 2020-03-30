@@ -13,6 +13,28 @@ bool listkosong(list l) {
     }
 }
 
+void createElement(address &p, string nama, int id, float saldo) {
+    p = new elmList;
+    
+    cout<<"input nama pelanggan"<<endl;
+    cin>> nama;
+    info(p).nama = nama;
+    cout<< endl;
+    
+    cout<<"input id pelanggan"<<endl;
+    cin>> id;
+    info(p).id = id;
+    cout<< endl;
+    
+    cout<<"input saldo pelanggan"<<endl;
+    cin>> saldo;
+    info(p).id = saldo;
+    cout<< endl;
+    
+    next(p) = NULL;
+    prev(p) = NULL;
+};
+
 void tambahdatapertama(list &l,address p) {
     if(listkosong(l)==true) {
         first(l)= p;
@@ -64,10 +86,4 @@ void tampildata(list l) {
     }
 
     cout << endl;
-}
-
-int main{
-    
-    cout<<"daffa ini nanti coutnya apa?"<<endl;
-        
 }
