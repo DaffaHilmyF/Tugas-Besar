@@ -65,3 +65,9 @@ void tampildata(list l) {
 
     cout << endl;
 }
+
+int main{
+    
+    cout<<"daffa ini nanti coutnya apa?"<<endl;
+        
+}
