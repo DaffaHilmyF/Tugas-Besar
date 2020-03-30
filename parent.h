@@ -33,7 +33,7 @@ void createElement(address &p, string nama, int id, float saldo);
 bool listkosong(list l);
 void tambahdatapertama(list &l,address p);
 void hapusdataterakhir(list &l,address &p);
-void tambahdatasetelah(list &l,address p,address prec)
+void tambahdatasetelah(list &l,address p,address prec);
 void tampildata(list l);
 
 #endif // PARENT_H_INCLUDED
