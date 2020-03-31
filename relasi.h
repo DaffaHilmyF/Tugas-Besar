@@ -31,4 +31,4 @@ void createListRelasi(List_relasi &L);
 void insertLastRelasi(List_relasi &L, address_relasi P);
 void createElemenRelasi(address_parent P, address_child C);
 
-#endif // LIST_RELASI_H_INCLUDED
+#endif // RELASI_H_INCLUDED
