@@ -1,0 +1,52 @@
+#include <iostream>
+#include "parent.h"
+
+using namespace std;
+
+int main()
+{
+	List_parent L;
+	address_parent P;
+	int menu
+	
+	
+	cout<< "menu"<<endl;
+	cout<<end;
+	cout<< "1. insert data pembeli" <<endl;
+	cout<< "2. insert data barang" <<endl;
+	cout<< "3. relasi antara pembeli dan barang yang dibeli" <<endl;
+	cout<< "4. menghapus data pembeli" <<endl;
+	cout<< "5. menghapus data barang" <<endl:
+	cout<< "6. menampilkan data" <<endl;
+	cout<< "7. manampilkan data lagi"<<endl;
+	cout<< "0. keluar"<<endl;
+	
+	cout<<endl;
+	cout "input:";
+	cin>>menu;
+    
+  while (menu!= 0){
+    if (menu == 1){
+        createParentElmt(P);
+        insertFirstParent(L,P);
+        
+	   }else if(menu == 2){
+	      createChildElmt(P);
+        insertLastChild(L,P);
+       
+	   }else if(menu == 3){
+        
+     }else if (menu == 4){
+        printInfo(L);
+        deleteLastParent(L,P);
+        
+     }else if(menu == 5){
+        printInfo(L,P);
+        delete(??);
+     
+     }else if (menu == 6){
+       
+     }
+  }
+    cout<<"Data tidak ada"<<endl;
+}
