@@ -23,7 +23,7 @@ struct elmlist_relasi{
 };
 
 struct List_relasi{
-    address_relasi first, last;
+    address_relasi first;
 };
 
 
