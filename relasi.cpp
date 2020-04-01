@@ -11,8 +11,14 @@ void insertLastRelasi(List_relasi &L, address_relasi P){
         first(L) = P;
         last(L) = P;
     }else{
-        next(last(L)) = P;
-        last(L) = P;
+        address Q = first(L);
+        while(Q != NULL){
+            Q = next(Q);
+        }
+        
+        next(Q) = P;
+        next(P) = NULL;
+        
     }
 }
 
