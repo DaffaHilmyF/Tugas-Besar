@@ -1,11 +1,6 @@
 #include "child.h"
 
-void createListChild (list &L) {
-    first(L) = NULL;
-    last(L) = NULL;
-}
-
-bool listChildIsEmpty(list L) {
+bool listChildIsEmpty(List_child L) {
     if (first(L) == NULL && last(L) == NULL) {
         return true;
     }else{
@@ -13,8 +8,41 @@ bool listChildIsEmpty(list L) {
     }
 }
 
-address findChildElmt(list L, string X){
-    address P = first(L);
+
+void createListChild(List_child &L) {
+    first(L) = NULL;
+    last(L) = NULL;
+}
+
+
+void createChildElmt(address_child &P){
+    string ID, namaBarang;
+    int stockBarang, hargaBarang;
+
+
+    cout << "================ " << "Menambah Data Barang" << " ================" << endl << endl;
+
+
+    P = new elmlist_child;
+    cout << "ID barang      : "; cin >> ID; cin.ignore();
+    cout << "Nama barang    : "; getline(cin, namaBarang);
+    cout << "Stock barang   : "; cin >> stockBarang;
+    cout << "Harga barang   : "; cin >> hargaBarang;
+
+    info(P).id_Barang = ID;
+    info(P).nama_Barang = namaBarang;
+    info(P).stock_Barang = stockBarang;
+    info(P).harga_Barang = hargaBarang;
+    next(P) = P;
+    prev(P) = P;
+
+    cout << endl;
+}
+
+
+address_child findElm(List_child L, string X) {
+    address_child P = first(L);
+
     if (listChildIsEmpty(L) != true) {
         while (P != NULL && info(P).id_Barang != X) {
             if (info(P).id_Barang == X){
@@ -23,19 +51,13 @@ address findChildElmt(list L, string X){
                 P = next(P);
             }
         }
-        return NULL;
+    }
+    return NULL;
 }
 
-void createChildElmt(address &P, string ID, string namaBarang, int stockBarang, int hargaBarang){
-    P = new elmlist;
-    info(P).id_Barang = ID;
-    info(P).nama_Barang = namaBarang;
-    info(P).stock_Barang = stockBarang;
-    info(P).harga_Barang = hargaBarang;
-    next(P) = P;
-    prev(P) = P;
-}
-void insertLastChild(list &L, address P){
+
+
+void insertLastChild(List_child &L, address_child P){
     if(listChildIsEmpty(L) == true){
         first(L) = P;
         last(L) = P;
@@ -48,13 +70,18 @@ void insertLastChild(list &L, address P){
     }
 
 }
-void deleteAfterChild(list &L, address Prec, address &P){
+
+void deleteLastChild(List_child &L, address_child &P){
+
+
 
 }
-void printChildList(list L){
-    address P = first(L);
+
+void printInfoChild(List_child L){
+    cout << "============== " << "Menampilkan Data Barang" << " ===============" << endl << endl;
+    address_child P = first(L);
     if(listChildIsEmpty(L) == true){
-        cout << "Maaf tidak ada barang"
+        cout << "Maaf tidak ada barang";
     }else{
         while(next(P) != first(L)){
             cout <<"ID          : " << info(P).id_Barang << endl;
