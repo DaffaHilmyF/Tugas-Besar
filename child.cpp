@@ -15,14 +15,28 @@ void createListChild(List_child &L) {
 }
 
 
-void createChildElmt(address_child &P, string ID, string namaBarang, int stockBarang, int hargaBarang){
+void createChildElmt(address_child &P){
+    string ID, namaBarang;
+    int stockBarang, hargaBarang;
+
+
+    cout << "================ " << "Menambah Data Barang" << " ================" << endl << endl;
+
+
     P = new elmlist_child;
+    cout << "ID barang      : "; cin >> ID; cin.ignore();
+    cout << "Nama barang    : "; getline(cin, namaBarang);
+    cout << "Stock barang   : "; cin >> stockBarang;
+    cout << "Harga barang   : "; cin >> hargaBarang;
+
     info(P).id_Barang = ID;
     info(P).nama_Barang = namaBarang;
     info(P).stock_Barang = stockBarang;
     info(P).harga_Barang = hargaBarang;
     next(P) = P;
     prev(P) = P;
+
+    cout << endl;
 }
 
 
@@ -57,9 +71,14 @@ void insertLastChild(List_child &L, address_child P){
 
 }
 
+void deleteLastChild(List_child &L, address_child &P){
 
 
-void printInfo(List_child L) {
+
+}
+
+void printInfoChild(List_child L){
+    cout << "============== " << "Menampilkan Data Barang" << " ===============" << endl << endl;
     address_child P = first(L);
     if(listChildIsEmpty(L) == true){
         cout << "Maaf tidak ada barang";
