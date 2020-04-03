@@ -1,7 +1,7 @@
 #ifndef CHILD_H_INCLUDED
 #define CHILD_H_INCLUDED
 
-
+#include <string>
 #include <iostream>
 using namespace std;
 
@@ -31,17 +31,11 @@ struct List_child{
     address_child first;
     address_child last;
 };
-
-
-
 bool listChildIsEmpty(List_child L);
 void createListChild(List_child &L);
-void createChildElmt(address_child &P, string ID, string namaBarang, int stockBarang, int hargaBarang);
+void createChildElmt(address_child &P);
 address_child findElm(List_child L, infotype_child x);
 void insertLastChild(List_child &L, address_child P);
-void printInfo(List_child L);
-
-
-
-
+void printInfoChild(List_child L);
+void deleteLastChild(List_child &L, address_child &P);
 #endif // CHILD_H_INCLUDED
