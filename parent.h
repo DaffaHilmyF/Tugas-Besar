@@ -30,11 +30,12 @@ struct List_parent {
 }; 
 
 void createList(List_parent &L);
-void createParentElmt(address_parent &P, string costumerID, string costumerName, int saldo);
+void createParentElmt(address_parent &P, string customerID, string customerName, int saldo);
 bool listParentEmpty(List_parent L);
 void insertAfterParent(List_parent &L, address_parent P,address_parent Prec);
 void insertFirstParent(List_parent &L, address_parent P);
 void deleteLastParent(List_parent &L, address_parent &P);
+void deleteFirstParent(List_parent &L, address_parent &P);
 void printInfo(List_parent L);
 address_parent findElmParent(List_parent L, string X);
 
