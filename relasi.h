@@ -1,18 +1,18 @@
 #ifndef RELASI_H_INCLUDED
 #define RELASI_H_INCLUDED
 
-#include "list_relasi.h"
-#include "list_child.h"
-#include "list_parent.h"
+
+#include "relasi.h"
+#include "child.h"
+#include "parent.h"
 
 #include <iostream>
-using namespace std;
-
+#include <stdlib.h>
 #define next(P) P->next
 #define first(L) L.first
-#define last(L) L.last
 #define child(P) P->child
 #define parent(P) P->parent
+
 
 typedef struct elmlist_relasi *address_relasi;
 
@@ -22,13 +22,18 @@ struct elmlist_relasi{
     address_parent parent;
 };
 
-struct List_relasi{
+typedef struct List_relasi{
     address_relasi first;
 };
 
-
+bool isEmptyRelasi(List_relasi L);
+void createElemenRelasi(address_parent P, address_child C);
 void createListRelasi(List_relasi &L);
 void insertLastRelasi(List_relasi &L, address_relasi P);
-void createElemenRelasi(address_parent P, address_child C);
+void deleteFirstRelasi(List_relasi &L, address_relasi &P);
+void deleteLastRelasi(List_relasi &L, address_relasi &P);
+void deleteByRelasi(List_parent &orangTua, address_relasi &P, string X);
+address_relasi findElmRelasi(List_relasi L, address_parent P, address_child C);
+void printInfoRelasi(List_relasi L) ;
 
-#endif // LIST_RELASI_H_INCLUDED
+#endif // RELASI_H_INCLUDED
