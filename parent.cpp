@@ -14,26 +14,19 @@ bool listParentEmpty(List_parent L) {
 }
 
 void createParentElmt(address_parent &P, int customerID, string customerName, int saldo) {
-    P = new elmList_parent;
+    P = new elmlist_parent;
     
-    cout<<"masukkan nama pelanggan"<<endl;
-    cin>> nama;
-    info(p).nama = customerName;
-    cout<< endl;
+    cout<<" ID Customer         : "; cin>> id;
+    cout<<" Nama Customer       : "; cin>> customerName;
+    cout<<" Saldo               : "; cin>> saldo;
     
-    cout<<"masukkan ID pelanggan"<<endl;
-    cin>> id;
-    info(p).id = customerID;
-    cout<< endl;
+    info(P).id = customerID;
+    info(P).nama = customerName;
+    info(P).saldo = saldo;
+    next(P) = NULL;
+    prev(P) = NULL;
     
-    cout<<"masukkan saldo pelanggan"<<endl;
-    cin>> saldo;
-    info(p).saldo = saldo;
-    cout<< endl;
-    
-    next(p) = NULL;
-    prev(p) = NULL;
-};
+}
 
 void insertFirstParent(List_parent &L, address_parent P) {
     address_parent Q;
@@ -64,7 +57,7 @@ void deleteLastParent(List_parent &L, address_parent &P){
     }
 }
 
-void tambahdatasetelah(list &l,address p,address prec){
+void insertAfterParent(List_parent &L, address_parent P,address_parent Prec){
     if (prec != NULL){
         next(p) = next(prec);
         prev(p) = prec;
@@ -98,3 +91,24 @@ address_parent findElmParent(List_parent L, string X) {
     }
     return NULL;
 }
+
+void deleteFirstParent(List_parent &L, address_parent &P) {
+   if (istParentEmpty(L) == true) {
+        cout << "data Kosong";
+        cout << endl;
+        P = NULL;
+        first(L) = NULL;
+        last(L) = NULL;
+    } else if (next(L.first)==NULL) {
+        P = first(L);
+        first(L) = NULL;
+        last(L) = NULL;
+    } else {
+        P = first(L);
+        first(L) = next(P);
+        next(P) = NULL;
+        prev(first(L)) = NULL;
+    }
+}
+
+
