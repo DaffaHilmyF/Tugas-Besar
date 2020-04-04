@@ -33,9 +33,12 @@ struct List_child{
 };
 bool listChildIsEmpty(List_child L);
 void createListChild(List_child &L);
-void createChildElmt(address_child &P);
-address_child findElm(List_child L, infotype_child x);
+void createChildElmt(address_child &P, string ID, string namaBarang, int stockBarang, int hargaBarang);
 void insertLastChild(List_child &L, address_child P);
-void printInfoChild(List_child L);
+void deleteFirstChild(List_child &L, address_child &P);
+void deleteByName(List_child &L,address_child &P, string namaBarang);
 void deleteLastChild(List_child &L, address_child &P);
+address_child findElmChild(List_child L, string x);
+void printInfoChild(List_child L);
+void inputChild(List_child &L);
 #endif // CHILD_H_INCLUDED

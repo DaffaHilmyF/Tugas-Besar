@@ -16,21 +16,25 @@ void createListChild(List_child &L) {
     last(L) = NULL;
 }
 
-
-void createChildElmt(address_child &P){
+void inputChild(List_child &L){
     string ID, namaBarang;
     int stockBarang, hargaBarang;
-
+    address_child P;
 
     cout << "================ " << "Menambah Data Barang" << " ================" << endl << endl;
-
-
-    P = new elmlist_child;
     cout << "ID barang      : "; cin >> ID; cin.ignore();
     cout << "Nama barang    : "; getline(cin, namaBarang);
+    cout << "Nama barang    : "; cin >> namaBarang;
     cout << "Stock barang   : "; cin >> stockBarang;
     cout << "Harga barang   : "; cin >> hargaBarang;
+    createChildElmt(P, ID, namaBarang, stockBarang, hargaBarang);
+    insertLastChild(L, P);
 
+}
+
+void createChildElmt(address_child &P, string ID, string namaBarang, int stockBarang, int hargaBarang){
+
+    P = new elmlist_child;
     info(P).id_Barang = ID;
     info(P).nama_Barang = namaBarang;
     info(P).stock_Barang = stockBarang;
@@ -151,13 +155,13 @@ void printInfoChild(List_child L){
             cout <<"ID          : " << info(P).id_Barang << endl;
             cout <<"Nama Barang : " << info(P).nama_Barang << endl;
             cout <<"Stock       : " << info(P).stock_Barang << endl;
-            cout <<"Harga       : " << info(P).harga_Barang << endl;
+            cout <<"Harga       : " << info(P).harga_Barang << endl<<endl;
             P = next(P);
         }
             cout <<"ID          : " << info(P).id_Barang << endl;
             cout <<"Nama Barang : " << info(P).nama_Barang << endl;
             cout <<"Stock       : " << info(P).stock_Barang << endl;
-            cout <<"Harga       : " << info(P).harga_Barang << endl;
+            cout <<"Harga       : " << info(P).harga_Barang << endl<<endl;
         }
         cout << "========================================" << endl;
 }
