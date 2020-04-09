@@ -1,6 +1,9 @@
 #ifndef PARENT_H_INCLUDED
 #define PARENT_H_INCLUDED
 #include <iostream>
+#include <string>
+#include <stdlib.h>
+
 #define info(A) A->info
 #define next(A) A->next
 #define prev(A) A->prev
@@ -10,7 +13,7 @@
 using namespace std;
 
 struct pembeli{
-    int id;
+    string id;
     string nama;
     float saldo;
 };
@@ -29,14 +32,17 @@ struct List_parent {
     address_parent last;
 }; 
 
-void createList(List_parent &L);
+void createListParent(List_parent &L);
 void createParentElmt(address_parent &P, string customerID, string customerName, int saldo);
 bool listParentEmpty(List_parent L);
-void insertAfterParent(List_parent &L, address_parent P,address_parent Prec);
 void insertFirstParent(List_parent &L, address_parent P);
+void deleteByParent(List_parent &L, address_parent &P, string namaCostumer);
 void deleteLastParent(List_parent &L, address_parent &P);
 void deleteFirstParent(List_parent &L, address_parent &P);
-void printInfo(List_parent L);
+void printInfoParent(List_parent L);
 address_parent findElmParent(List_parent L, string X);
+void inputParent(List_parent &L);
+
+
 
 #endif // PARENT_H_INCLUDED
