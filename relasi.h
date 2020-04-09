@@ -6,8 +6,7 @@
 #include "child.h"
 #include "parent.h"
 
-#include <iostream>
-#include <stdlib.h>
+
 #define next(P) P->next
 #define first(L) L.first
 #define child(P) P->child
@@ -27,12 +26,12 @@ typedef struct List_relasi{
 };
 
 bool isEmptyRelasi(List_relasi L);
-void createElemenRelasi(address_parent P, address_child C);
+void createElemenRelasi(address_parent P, address_child C, address_relasi &Q);
 void createListRelasi(List_relasi &L);
 void insertLastRelasi(List_relasi &L, address_relasi P);
 void deleteFirstRelasi(List_relasi &L, address_relasi &P);
 void deleteLastRelasi(List_relasi &L, address_relasi &P);
-void deleteByRelasi(List_parent &orangTua, address_relasi &P, string X);
+void deleteByRelasi(List_relasi &L, address_parent &orgTua, address_child &anak, address_relasi &P);
 address_relasi findElmRelasi(List_relasi L, address_parent P, address_child C);
 void printInfoRelasi(List_relasi L) ;
 
