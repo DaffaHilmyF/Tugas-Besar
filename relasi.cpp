@@ -1,11 +1,11 @@
 #include "relasi.h"
 
-void createList(List_relasi &L) {
+void createListRelasi(List_relasi &L) {
     first(L) = NULL;
 }
 
-void createElemenRelasi(address_parent P, address_child C){
-    address_relasi Q = new elmlist_relasi;
+void createElemenRelasi(address_parent P, address_child C, address_relasi &Q){
+    Q = new elmlist_relasi;
     parent(Q) = P;
     child(Q) = C;
     next(Q) = NULL;
@@ -17,7 +17,7 @@ void insertLastRelasi(List_relasi &L, address_relasi P){
         first(L) = P;
     }else{
         address_relasi Q = first(L);
-        while(Q != NULL){
+        while(next(Q) != NULL){
             Q = next(Q);
         }
 
@@ -41,13 +41,13 @@ void deleteFirstRelasi(List_relasi &L, address_relasi &P){
     if(isEmptyRelasi(L) == true){
         cout << "Relasi tidak ada" << endl;
         P = NULL;
-    }else if (next(P) == NULL){
+    }else if (next(first(L)) == NULL){
         P = first(L);
         first(L) = NULL;
         next(P) = NULL;
     }else{
         P = first(L);
-        first(L) = P;
+        first(L) = next(P);
         next(P) = NULL;
     }
 
@@ -57,7 +57,7 @@ void deleteLastRelasi(List_relasi &L, address_relasi &P){
     if(isEmptyRelasi(L) == true){
         cout << "Relasi tidak ada" << endl;
         P = NULL;
-    }else if (next(P) == NULL){
+    }else if (next(first(L)) == NULL){
         P = first(L);
         first(L) = NULL;
         next(P) = NULL;
@@ -76,53 +76,67 @@ void deleteLastRelasi(List_relasi &L, address_relasi &P){
 
 
 void deleteByRelasi(List_relasi &L, address_parent &orgTua, address_child &anak, address_relasi &P){
-    address_relasi Q;
-    P = findElmRelasi(L, orgTua, anak);
-
-    if(P == NULL){ // jika address P tidak ditemukan
-        cout << "Data tidak ditemukan." << endl << "Data gagal dihapus." << endl;
+    address_relasi Prec = findElmRelasi(L, orgTua, anak);
+    address_relasi R;
+    address_relasi Q = first(L);
+    while(next(Q) != NULL){
+        Q = next(Q);
+    }
+    if(Prec == NULL){ // Data Prec tidak ditemukan
+        cout << "Data tidak ada";
         P = NULL;
-    }else if (next(first(L)) == NULL){ // jika data hanya ada pada akhir list
+    }else if(Prec == first(L) && next(Prec) == NULL){
+
         first(L) = NULL;
-    }else{
-        if(next(P) == NULL){ //Jika Data yang dihapus ada pada akhir list
-            while(next(Q) != P){
-                Q = next(Q);
-            }
-            next(Q) == NULL;
+        P = NULL;
+    }else if (Prec == Q){
+        P = Prec;
+        deleteLastRelasi(L, P);
 
-        }else{ // Jika data ada pada tengah list
-            while(next(Q) != P){
-                Q = next(Q);
-            }
-            next(Q) = next(P);
-            next(P) = NULL;
+    }else if (Prec == first(L)){
+        P = Prec;
+        deleteFirstRelasi(L, P);
 
+    }else {
+        R = first(L);
+        while(next(R) != Prec){
+            R = next(R);
         }
+        P = Prec;
+        next(R) = next(P);
+        next(P) = NULL;
     }
 
+
 }
-
-
 
 address_relasi findElmRelasi(List_relasi L, address_parent P, address_child C){
     address_relasi Q = first(L);
-    while(Q != NULL) {
-        if(parent(Q)==P && child(Q)== C) {
-            return Q;
+    
+    if(isEmptyRelasi(L) == true){
+        cout << "Tidak ada data" << endl;
+    }else{
+        while(Q != NULL) {
+            if(parent(Q)==P && child(Q)== C) {
+                return Q;
+            }else{
+                Q = next(Q);
+            }
         }
-        Q = next(Q);
     }
+    
     return NULL;
-
-
-
 }
 
 void printInfoRelasi(List_relasi L) {
-    address_relasi P = first(L);
+   address_relasi P = first(L);
+   int i = 0;
+   cout << "======================= Menampilkan Relasi ======================" << endl << endl;
+    
    while(P !=NULL) {
-        cout << info(parent(P)).id <<endl;
-        P = next(P);
+       i = i + 1;
+       cout << i << ". " << info(parent(P)).nama << " : " << info(child(P)).nama_Barang << endl;
+       P = next(P);
     }
+    cout << "=================================================================" << endl;
 }
