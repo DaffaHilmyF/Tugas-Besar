@@ -40,7 +40,7 @@ void deleteLastParent(List_parent &L, address_parent &P){
         cout << "data Kosong";
         cout << endl;
         P = NULL;
-    } else if (next(first(L)) == NULL && next(last(L)) == NULL) {
+    } else if (first(L)) == last(L)) {
         P = first(L);
         first(L) = NULL;
         last(L) = NULL;
@@ -57,8 +57,6 @@ void deleteFirstParent(List_parent &L, address_parent &P) {
         cout << "data Kosong";
         cout << endl;
         P = NULL;
-        first(L) = NULL;
-        last(L) = NULL;
     } else if (next(L.first)==NULL) {
         P = first(L);
         first(L) = NULL;
