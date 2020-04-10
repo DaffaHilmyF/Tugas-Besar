@@ -34,5 +34,7 @@ void deleteLastRelasi(List_relasi &L, address_relasi &P);
 void deleteByRelasi(List_relasi &L, address_parent &orgTua, address_child &anak, address_relasi &P);
 address_relasi findElmRelasi(List_relasi L, address_parent P, address_child C);
 void printInfoRelasi(List_relasi L) ;
+void showRelationParent(List_relasi R, List_child C, List_parent P);
+void showRelationChild(List_relasi R, List_child C, List_parent P);
 
 #endif // RELASI_H_INCLUDED
