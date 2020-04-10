@@ -13,7 +13,7 @@ bool listParentEmpty(List_parent L) {
     }
 }
 
-void createParentElmt(address_parent &P, int customerID, string customerName, int saldo) {
+void createParentElmt(address_parent &P, string customerID, string customerName, int saldo) {
     P = new elmlist_parent;
     info(P).id = customerID;
     info(P).nama = customerName;
