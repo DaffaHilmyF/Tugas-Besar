@@ -110,6 +110,55 @@ void deleteByRelasi(List_relasi &L, address_parent &orgTua, address_child &anak,
 
 }
 
+void showRelationParent(List_relasi R, List_child C, List_parent P){
+    string nama;
+    address_parent aP;
+    address_relasi aR = first(R);
+
+    cout << "Masukan Nama : "; cin.ignore(); getline(cin, nama); cout << endl;
+    aP = findElmParent(P, nama);
+    cout << "Berelasi dengan......" << endl;
+    if(aP != NULL){
+        while(aR != NULL){
+            if(info(parent(aR)).nama == nama){
+                cout <<info(child(aR)).nama_Barang << ", ";
+            }
+            aR = next(aR);
+        }
+
+    }else{
+        cout << "Tidak ada Relasi" <<endl;
+
+    }
+    cout << endl;
+
+}
+
+
+void showRelationChild(List_relasi R, List_child C, List_parent P){
+    string nama;
+    address_child aC;
+    address_relasi aR = first(R);
+
+    cout << "Masukan Nama : "; cin.ignore(); getline(cin, nama); cout << endl;
+    aC= findElmChild_Barang(C, nama);
+    cout << "Berelasi dengan......" << endl;
+    if(aC != NULL){
+        while(aR != NULL){
+            if(info(child(aR)).nama_Barang == nama){
+                cout <<info(parent(aR)).nama<< ", ";
+            }
+            aR = next(aR);
+        }
+
+    }else{
+        cout << "Tidak ada Relasi" <<endl;
+
+    }
+    cout << endl;
+
+}
+
 address_relasi findElmRelasi(List_relasi L, address_parent P, address_child C){
     address_relasi Q = first(L);
     
@@ -123,20 +172,21 @@ address_relasi findElmRelasi(List_relasi L, address_parent P, address_child C){
                 Q = next(Q);
             }
         }
-    }
     
     return NULL;
+    }
 }
 
 void printInfoRelasi(List_relasi L) {
    address_relasi P = first(L);
-   int i = 0;
+
    cout << "======================= Menampilkan Relasi ======================" << endl << endl;
     
    while(P !=NULL) {
-       i = i + 1;
-       cout << i << ". " << info(parent(P)).nama << " : " << info(child(P)).nama_Barang << endl;
+       cout << info(parent(P)).nama << " : " << info(child(P)).nama_Barang << ", ";
        P = next(P);
+       cout<<endl;
+       
     }
     cout << "=================================================================" << endl;
 }
