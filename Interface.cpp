@@ -28,15 +28,118 @@ void showMenu(List_child &C, List_parent &P, List_relasi &R){
     case 3 :
             subMenuDelete(C,P,R);
     case 4 :
+            subMenuRelation(C, P, R);
     case 5 :
+            subMenuSearch(C, P, R);
     case 6 :
             subMenuDisplay(C,P,R);
+    case 7 :
+        system("CLS");
+        cout << "===================================================================" << endl;
+        cout << "=                       ARIGATOU GOZAIMUCH                        =" << endl;
+        cout << "=                                                                 =" << endl;
+        cout << "=                                                                 =" << endl;
+        cout << "=  CREATED AND DEVELOPED BY :                                     =" << endl;
+        cout << "=    RANA RAMADHANI NUR FITRIANA                     1302194100   =" << endl;
+        cout << "=    DAFFA HILMY FADHLURROHMAN                       1302194004   =" << endl;
+        cout << "===================================================================" << endl;
+        exit(0);
+    default :
+        showMenu(C, P, R);
     }
 
 }
 
+void subMenuRelation(List_child C, List_parent P, List_relasi R){
+address_parent aP;
+address_child aC;
+address_relasi aR;
+
+system("CLS");
+        int inputData;
+        string nama;
+        cout << "======================== RELASI BARANG ==========================="<< endl;
+        cout << "1. Relasi Costumer" <<endl << "2. Relasi Barang" << endl;
+        cout << "==================================================================" << endl;
+        cout << "Pilih Menu : "; cin >> inputData;
+            while(inputData != 1 || inputData != 2){
+                if(inputData == 1){
+                    system("CLS");
+                    cout << "======================== RELASI COSTUMER ==========================="<< endl;
+                    showRelationParent(R,C,P);
+                    system("PAUSE");
+                    cout << "==================================================================" << endl;
+                    system("CLS");
+                    showMenu(C,P,R);
+                }else if(inputData == 2){
+                    system("CLS");
+                    cout << "======================== RELASI BARANG ============================"<< endl;
+                    showRelationChild(R, C, P);
+                    system("PAUSE");
+                    cout << "===================================================================" << endl;
+                    system("CLS");
+                    showMenu(C,P,R);
+                }
 
 
+            }
+
+}
+
+void subMenuSearch(List_child C, List_parent P, List_relasi R){
+     address_parent aP;
+address_child aC;
+address_relasi aR;
+
+system("CLS");
+        int inputData;
+        string nama;
+        cout << "======================== INPUT BARANG ==========================="<< endl;
+        cout << "1. Cari Data Costumer" <<endl << "2. Cari Data Barang" << endl;
+        cout << "=================================================================" << endl;
+        cout << "Pilih Menu : "; cin >> inputData;
+            while(inputData != 1 || inputData != 2){
+                if(inputData == 1){
+                    system("CLS");
+                    cout << "======================== CARI COSTUMER ==========================="<< endl;
+                    cout << "Masukan Nama : "; cin.ignore(); getline(cin, nama);
+                    aP = findElmParent(P, nama);
+                    if (aP != NULL){
+                        cout << "Nama   : " << info(aP).nama<<endl;
+                        cout << "Saldo  : " << info(aP).saldo<<endl;
+                    }else{
+                        cout << "Nama tidak ada dalam database."<<endl;
+                    }
+                    system("PAUSE");
+                    cout << "==================================================================" << endl;
+                    system("CLS");
+                    showMenu(C,P,R);  // ini penyebabnya
+                }else if(inputData == 2){
+                    system("CLS");
+                    cout << "======================== CARI BARANG ============================"<< endl;
+                    cout << "Masukan Nama : "; cin.ignore(); getline(cin, nama);
+                    aC = findElmChild_Barang(C, nama);
+                    if (aC != NULL){
+                        cout << "Nama   : " << info(aC).nama_Barang<<endl;
+                        cout << "Harga  : " << info(aC).harga_Barang<<endl;
+                        cout << "Stock  : " << info(aC).stock_Barang<<endl;
+                    }else{
+                        cout << "Nama tidak ada dalam database."<<endl;
+                    }
+                    system("PAUSE");
+                    cout << "=================================================================" << endl;
+                    system("CLS");
+                    showMenu(C,P,R);   // ini penyebabnya
+                }
+
+
+            }
+
+
+
+
+
+}
 
 void subMenuDisplay(List_child C, List_parent P, List_relasi R){
 address_parent aP;
@@ -171,7 +274,7 @@ address_relasi aR;
     }
 
 void subMenuInput(List_child &C, List_parent &P, List_relasi &R){
-    address_parent aP;
+address_parent aP;
 address_child aC;
 address_relasi aR;
 
