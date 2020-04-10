@@ -21,14 +21,14 @@ void inputChild(List_child &L){
     int stockBarang, hargaBarang;
     address_child P;
 
-    cout << "================ " << "Menambah Data Barang" << " ================" << endl << endl;
+    cout << "===================== Menambah Data Barang  =====================" << endl << endl;
     cout << "ID barang      : "; cin >> ID; cin.ignore();
     cout << "Nama barang    : "; getline(cin, namaBarang);
-    cout << "Nama barang    : "; cin >> namaBarang;
     cout << "Stock barang   : "; cin >> stockBarang;
     cout << "Harga barang   : "; cin >> hargaBarang;
     createChildElmt(P, ID, namaBarang, stockBarang, hargaBarang);
     insertLastChild(L, P);
+    cout << "=================================================================" << endl;
 
 }
 
@@ -39,6 +39,7 @@ void createChildElmt(address_child &P, string ID, string namaBarang, int stockBa
     info(P).nama_Barang = namaBarang;
     info(P).stock_Barang = stockBarang;
     info(P).harga_Barang = hargaBarang;
+    info(P).jumlah_Terambil = 0;
     next(P) = P;
     prev(P) = P;
 
@@ -46,8 +47,9 @@ void createChildElmt(address_child &P, string ID, string namaBarang, int stockBa
 }
 
 
-address_child findElmChild(List_child L, string X) {
+address_child findElmChild_Barang(List_child L, string X) {
     address_child P = first(L);
+
 
     while(next(P) != first(L) && info(P).nama_Barang != X){
         if (info(P).nama_Barang == X){
@@ -58,6 +60,25 @@ address_child findElmChild(List_child L, string X) {
 
     }
         if (info(P).nama_Barang == X){
+            return P;
+        }else{
+            return NULL;
+        }
+}
+
+address_child findElmChild_Id(List_child L, string X) {
+    address_child P = first(L);
+
+
+    while(next(P) != first(L) && info(P).id_Barang != X){
+        if (info(P).id_Barang == X){
+            return P;
+        }else{
+            P = next(P);
+        }
+
+    }
+        if (info(P).id_Barang == X){
             return P;
         }else{
             return NULL;
@@ -121,7 +142,7 @@ void deleteLastChild(List_child &L, address_child &P){
 
 void deleteByName(List_child &L, address_child &P, string namaBarang){
     address_child Q;
-    P = findElmChild(L, namaBarang);
+    P = findElmChild_Barang(L, namaBarang);
 
     if(P == NULL){
         cout << "Data tidak ditemukan." << endl << "Data gagal dihapus." << endl;
@@ -146,22 +167,48 @@ void deleteByName(List_child &L, address_child &P, string namaBarang){
 }
 
 void printInfoChild(List_child L){
-    cout << "============== " << "Menampilkan Data Barang" << " ===============" << endl << endl;
+    cout << "================== Menampilkan Data Barang ===================" << endl << endl;
     address_child P = first(L);
     if(listChildIsEmpty(L) == true){
         cout << "Maaf tidak ada barang";
     }else{
         while(next(P) != first(L)){
-            cout <<"ID          : " << info(P).id_Barang << endl;
-            cout <<"Nama Barang : " << info(P).nama_Barang << endl;
-            cout <<"Stock       : " << info(P).stock_Barang << endl;
-            cout <<"Harga       : " << info(P).harga_Barang << endl<<endl;
+            cout <<"ID              : " << info(P).id_Barang << endl;
+            cout <<"Nama Barang     : " << info(P).nama_Barang << endl;
+            cout <<"Stock           : " << info(P).stock_Barang << endl;
+            cout <<"Harga           : " << info(P).harga_Barang << endl << endl;
+
             P = next(P);
         }
-            cout <<"ID          : " << info(P).id_Barang << endl;
-            cout <<"Nama Barang : " << info(P).nama_Barang << endl;
-            cout <<"Stock       : " << info(P).stock_Barang << endl;
-            cout <<"Harga       : " << info(P).harga_Barang << endl<<endl;
+        cout <<"ID              : " << info(P).id_Barang << endl;
+        cout <<"Nama Barang     : " << info(P).nama_Barang << endl;
+        cout <<"Stock           : " << info(P).stock_Barang << endl;
+        cout <<"Harga           : " << info(P).harga_Barang << endl << endl;
+
         }
-        cout << "========================================" << endl;
+cout << "=================================================================" << endl;
+}
+
+void printTotalGoods(List_child L){
+
+cout << "============== Menampilkan Jumlah Barang Terambil ===============" << endl << endl;
+    address_child P = first(L);
+    if(listChildIsEmpty(L) == true){
+        cout << "Maaf tidak ada barang";
+    }else{
+        while(next(P) != first(L)){
+            cout <<"Nama Barang     : " << info(P).nama_Barang << endl;
+            cout <<"Jumlah Terambil : " << info(P).jumlah_Terambil << endl;
+
+
+            P = next(P);
+        }
+        cout <<"Nama Barang     : " << info(P).nama_Barang << endl;
+        cout <<"Jumlah Terambil : " << info(P).jumlah_Terambil << endl;
+
+        }
+cout << "=================================================================" << endl;
+
+
+
 }
