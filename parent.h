@@ -4,6 +4,8 @@
 #include <string>
 #include <stdlib.h>
 
+
+
 #define info(A) A->info
 #define next(A) A->next
 #define prev(A) A->prev
@@ -11,6 +13,8 @@
 #define last(A) A.last
 
 using namespace std;
+
+
 
 struct pembeli{
     string id;
@@ -23,25 +27,28 @@ typedef struct elmlist_parent *address_parent;
 
 struct elmlist_parent {
     infotype_parent info;
-    List_relasi child;
     address_parent next, prev;
 };
 
 struct List_parent {
     address_parent first;
     address_parent last;
-}; 
+};
 
 void createListParent(List_parent &L);
-void createParentElmt(address_parent &P, string customerID, string customerName, int saldo);
+void createParentElmt(address_parent &P, string costumerID, string costumerName, int saldo);
 bool listParentEmpty(List_parent L);
 void insertFirstParent(List_parent &L, address_parent P);
 void deleteByParent(List_parent &L, address_parent &P, string namaCostumer);
-void deleteLastParent(List_parent &L, address_parent &P);
 void deleteFirstParent(List_parent &L, address_parent &P);
+void deleteLastParent(List_parent &L, address_parent &P);
 void printInfoParent(List_parent L);
+void printInfoParentOnlyNameAndId(List_parent L);
 address_parent findElmParent(List_parent L, string X);
 void inputParent(List_parent &L);
+
+
+
 
 
 #endif // PARENT_H_INCLUDED
