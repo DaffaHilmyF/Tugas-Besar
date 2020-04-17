@@ -1,0 +1,83 @@
+# depslib dependency file v1.0
+1586357689 source:d:\random\data pembelanjaan\data pembelanjaan\child.cpp
+	"child.h"
+
+1586356939 d:\random\data pembelanjaan\data pembelanjaan\child.h
+	<iostream>
+	<stdlib.h>
+	<string>
+
+1586358202 source:d:\random\data pembelanjaan\data pembelanjaan\main.cpp
+	"relasi.h"
+	"child.h"
+	"parent.h"
+	"Interface.h"
+
+1586357162 source:d:\random\data pembelanjaan\data pembelanjaan\parent.cpp
+	"parent.h"
+
+1586334658 d:\random\data pembelanjaan\data pembelanjaan\parent.h
+	<iostream>
+	<string>
+	<stdlib.h>
+
+1586506499 source:d:\random\data pembelanjaan\data pembelanjaan\relasi.cpp
+	"relasi.h"
+
+1586506371 d:\random\data pembelanjaan\data pembelanjaan\relasi.h
+	"relasi.h"
+	"child.h"
+	"parent.h"
+
+1586506379 source:d:\random\data pembelanjaan\data pembelanjaan\interface.cpp
+	"Interface.h"
+
+1586506081 d:\random\data pembelanjaan\data pembelanjaan\interface.h
+	"relasi.h"
+	"child.h"
+	"parent.h"
+	<iostream>
+	<stdlib.h>
+	<string>
+
+1587138211 source:d:\asistensi tubes\data pembelanjaan\child.cpp
+	"child.h"
+
+1587138144 d:\asistensi tubes\data pembelanjaan\child.h
+	<iostream>
+	<stdlib.h>
+	<string>
+
+1587144079 source:d:\asistensi tubes\data pembelanjaan\interface.cpp
+	"Interface.h"
+
+1586506081 d:\asistensi tubes\data pembelanjaan\interface.h
+	"relasi.h"
+	"child.h"
+	"parent.h"
+	<iostream>
+	<stdlib.h>
+	<string>
+
+1587138194 d:\asistensi tubes\data pembelanjaan\relasi.h
+	"relasi.h"
+	"child.h"
+	"parent.h"
+
+1587137910 d:\asistensi tubes\data pembelanjaan\parent.h
+	<iostream>
+	<string>
+	<stdlib.h>
+
+1586358202 source:d:\asistensi tubes\data pembelanjaan\main.cpp
+	"relasi.h"
+	"child.h"
+	"parent.h"
+	"Interface.h"
+
+1587137975 source:d:\asistensi tubes\data pembelanjaan\parent.cpp
+	"parent.h"
+
+1587143537 source:d:\asistensi tubes\data pembelanjaan\relasi.cpp
+	"relasi.h"
+

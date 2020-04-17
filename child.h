@@ -1,8 +1,9 @@
 #ifndef CHILD_H_INCLUDED
 #define CHILD_H_INCLUDED
 
-#include <string>
 #include <iostream>
+#include <stdlib.h>
+#include <string>
 using namespace std;
 
 #define info(P) P->info
@@ -16,6 +17,7 @@ struct barang {
     string nama_Barang;
     int stock_Barang;
     int harga_Barang;
+    int jumlah_Terambil;
 };
 
 typedef barang infotype_child;
@@ -38,7 +40,13 @@ void insertLastChild(List_child &L, address_child P);
 void deleteFirstChild(List_child &L, address_child &P);
 void deleteByName(List_child &L,address_child &P, string namaBarang);
 void deleteLastChild(List_child &L, address_child &P);
-address_child findElmChild(List_child L, string x);
+address_child findElmChild_Barang(List_child L, string x);
+address_child findElmChild_Id(List_child L, string x);
+void printTotalGoods(List_child L);
 void printInfoChild(List_child L);
 void inputChild(List_child &L);
+void printInfoChildOnlyNameAndId(List_child L);
+
+
+
 #endif // CHILD_H_INCLUDED
