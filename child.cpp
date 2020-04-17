@@ -1,5 +1,9 @@
 #include "child.h"
 
+/** LIST CHILD DOUBLE CIRCULAR LIST && INSERT LAST **/
+
+
+//MENGECEK LIST CHILD
 bool listChildIsEmpty(List_child L) {
     if (first(L) == NULL && last(L) == NULL) {
         return true;
@@ -9,13 +13,14 @@ bool listChildIsEmpty(List_child L) {
 }
 
 
-
-
+//MEMBUAT LIST CHILD
 void createListChild(List_child &L) {
     first(L) = NULL;
     last(L) = NULL;
 }
 
+//PROCEDURE INPUT BERISI PROCEDURE CREATE ELEMENT LIST & PROCEDURE INSERT LAST
+//BERTUJUAN MEMPERSINGKAT PENULISAN CODE PADA MENU
 void inputChild(List_child &L){
     string ID, namaBarang;
     int stockBarang, hargaBarang;
@@ -32,6 +37,8 @@ void inputChild(List_child &L){
 
 }
 
+
+//MEMBUAT ELEMENT LIST TIPE DOUBLE CIRCULAR LIST
 void createChildElmt(address_child &P, string ID, string namaBarang, int stockBarang, int hargaBarang){
 
     P = new elmlist_child;
@@ -47,6 +54,7 @@ void createChildElmt(address_child &P, string ID, string namaBarang, int stockBa
 }
 
 
+//MENCARI ADDRESS ELEMENT DENGAN INPUT STRING NAMA BARANG
 address_child findElmChild_Barang(List_child L, string X) {
     address_child P = first(L);
 
@@ -66,6 +74,7 @@ address_child findElmChild_Barang(List_child L, string X) {
         }
 }
 
+//MENCARI ADDRESS ELEMENT DENGAN INPUT STRING ID
 address_child findElmChild_Id(List_child L, string X) {
     address_child P = first(L);
 
@@ -86,7 +95,7 @@ address_child findElmChild_Id(List_child L, string X) {
 }
 
 
-
+//MEMASUKAN ELEMENT BARU DIAKHIR
 void insertLastChild(List_child &L, address_child P){
     if(listChildIsEmpty(L) == true){
         first(L) = P;
@@ -100,6 +109,8 @@ void insertLastChild(List_child &L, address_child P){
     }
 
 }
+
+//MENGHAPUS ELEMENT YANG BERADA DI AWAL LIST
 void deleteFirstChild(List_child &L, address_child &P){
     if(listChildIsEmpty(L) == true){
         cout << "Tidak ada data dalam database"<<endl;
@@ -120,6 +131,8 @@ void deleteFirstChild(List_child &L, address_child &P){
 
 }
 
+
+//MENGHAPUS ELEMENT YANG BERADA DI AKHIR LIST
 void deleteLastChild(List_child &L, address_child &P){
     if(listChildIsEmpty(L) == true){
         cout << "Tidak ada data dalam database"<<endl;
@@ -140,6 +153,9 @@ void deleteLastChild(List_child &L, address_child &P){
 
 }
 
+
+//MENGHAPUS ELEMENT DENGAN MENGGUNAKAN INPUT STRING NAMA BARANG
+//IMPLEMENTASI DAN MODIFIKASI DARI DELETE AFTER
 void deleteByName(List_child &L, address_child &P, string namaBarang){
     address_child Q;
     P = findElmChild_Barang(L, namaBarang);
@@ -166,6 +182,8 @@ void deleteByName(List_child &L, address_child &P, string namaBarang){
     }
 }
 
+
+//MENAMPILKAN DATA PADA ELEMEN YANG TERSEDIA
 void printInfoChild(List_child L){
     cout << "================== Menampilkan Data Barang ===================" << endl << endl;
     address_child P = first(L);
@@ -189,8 +207,9 @@ void printInfoChild(List_child L){
 cout << "=================================================================" << endl;
 }
 
-void printTotalGoods(List_child L){
 
+//MENAMPILKAN JUMLAH BARANG TERBANYAK DAN TERSEDIKIT YANG DIBELI OLEH COSTUMER
+void printTotalGoods(List_child L){
 cout << "============== Menampilkan Jumlah Barang Terambil ===============" << endl << endl;
     address_child P = first(L);
     if(listChildIsEmpty(L) == true){
@@ -211,4 +230,21 @@ cout << "=================================================================" << e
 
 
 
+}
+
+
+//MENAMPILKAN DATA PADA ELEMEN YANG TERSEDIA HANYA NAMA DAN ID
+void printInfoChildOnlyNameAndId(List_child L){
+    address_child P = first(L);
+    if(listChildIsEmpty(L) == true){
+        cout << "Maaf tidak ada barang";
+    }else{
+        while(next(P) != first(L)){
+            cout <<"ID              : " << info(P).id_Barang << endl;
+            cout <<"Nama Barang     : " << info(P).nama_Barang << endl;
+            P = next(P);
+        }
+        cout <<"ID              : " << info(P).id_Barang << endl;
+        cout <<"Nama Barang     : " << info(P).nama_Barang << endl;
+        }
 }
