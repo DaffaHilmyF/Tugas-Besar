@@ -1,42 +1,49 @@
-#include <iostream>
+#include "relasi.h"
+#include "child.h"
+#include "parent.h"
+#include "Interface.h"
 
-using namespace std;
-#include "list_child.h"
-#include <stdlib.h>
+List_child C;
+List_parent P;
+List_relasi R;
 
-
-int main()
-{
-   List_child LC;
-   address_child PC;
-   string ID, namaBarang;
-   int stockBarang, hargaBarang, opsi;
-   string menu[2] = {"1. Masukan Data Barang", "2. Tampilkan Data"};
+address_parent aP;
+address_child aC;
+address_relasi aR;
 
 
 
-    createListChild(LC);
-    cout << "Menu" << endl;
-    for (int i = 0 ; i < 2 ; i++){
-        cout << menu[i] << endl;
-    }
-    cout << "Pilih Menu : "; cin >> opsi;
 
-    switch(opsi) {
-        case 1  :
-            
-            cout<< "Masukan data barang" << endl;
-            cin >> ID >> namaBarang >> stockBarang >> hargaBarang;
-            createChildElmt(PC, ID, namaBarang, stockBarang, hargaBarang);
-            insertLastChild(LC, PC);
-            main();
+int main(){
 
-        case 2  :
-            printInfo(LC);
 
-        default :
-            cout << endl;
-            main();
-        }
 
+    createListChild(C);
+    createListParent(P);
+    createListRelasi(R);
+
+    /** ISI DATA LIST CHILD **/
+    createChildElmt(aC, "1", "Susu Kental Manis", 10, 1000);
+    insertLastChild(C, aC);
+    createChildElmt(aC, "2", "Kopi Susu", 10, 2000);
+    insertLastChild(C, aC);
+    createChildElmt(aC, "3", "Nescafe", 1, 5000);
+    insertLastChild(C, aC);
+
+    /** ISI DATA LIST PARENT **/
+    createParentElmt(aP, "3", "Daffa Hilmy Fadhlurrohman", 5000);
+    insertFirstParent(P, aP);
+    createParentElmt(aP, "2", "Rana Ramadhani", 150000);
+    insertFirstParent(P, aP);
+    createParentElmt(aP, "1", "Fathuddin Anshari", 10000);
+    insertFirstParent(P, aP);
+    system("CLS");
+
+
+
+    showMenu(C, P, R);
+
+
+
+return 0;
 }
