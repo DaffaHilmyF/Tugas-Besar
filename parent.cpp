@@ -1,10 +1,14 @@
 #include "parent.h"
 
+/** LIST PARENT DOUBLE LIST && INSERT FIRST **/
+
+//MEMBUAT LIST KOSONG
 void createListParent(List_parent &L) {
     first(L) = NULL;
     last(L) = NULL;
 }
 
+//MENGECEK LIST PARENT
 bool listParentEmpty(List_parent L) {
     if (first(L) == NULL && last(L) == NULL) {
         return true;
@@ -13,16 +17,18 @@ bool listParentEmpty(List_parent L) {
     }
 }
 
+//MEMBUAT ELEMENLIST PARENT
 void createParentElmt(address_parent &P, string customerID, string customerName, int saldo) {
     P = new elmlist_parent;
-    info(P).id = customerID;
     info(P).nama = customerName;
+    info(P).id = customerID;
     info(P).saldo = saldo;
     next(P) = NULL;
     prev(P) = NULL;
-    
-}
+};
 
+
+//INSERT FIRST DOUBLE LIST
 void insertFirstParent(List_parent &L, address_parent P) {
     address_parent Q;
     if(listParentEmpty(L)==true) {
@@ -35,12 +41,11 @@ void insertFirstParent(List_parent &L, address_parent P) {
     }
 }
 
+//DELETE LAST DOUBLE LIST
 void deleteLastParent(List_parent &L, address_parent &P){
     if (listParentEmpty(L) == true) {
-        cout << "data Kosong";
-        cout << endl;
         P = NULL;
-    } else if (first(L)) == last(L)) {
+    } else if (first(L) == last(L)) {
         P = first(L);
         first(L) = NULL;
         last(L) = NULL;
@@ -52,12 +57,12 @@ void deleteLastParent(List_parent &L, address_parent &P){
     }
 }
 
-void deleteFirstParent(List_parent &L, address_parent &P) {
-   if (istParentEmpty(L) == true) {
-        cout << "data Kosong";
-        cout << endl;
+
+//DELETE FIRST DOUBLE LIST
+void deleteFirstParent(List_parent &L, address_parent &P){
+    if (listParentEmpty(L) == true) {
         P = NULL;
-    } else if (next(L.first)==NULL) {
+    } else if (first(L) == last(L)) {
         P = first(L);
         first(L) = NULL;
         last(L) = NULL;
@@ -69,6 +74,8 @@ void deleteFirstParent(List_parent &L, address_parent &P) {
     }
 }
 
+//DELETE ELEMEN BERDASARKAN NAMA COSTUMER
+//IMPLEMENTASI DELETE AFTER YANG DI MODIFIKASI
 void deleteByParent(List_parent &L, address_parent &P, string namaCostumer){
     address_parent Q;
     P = findElmParent(L, namaCostumer);
@@ -91,27 +98,29 @@ void deleteByParent(List_parent &L, address_parent &P, string namaCostumer){
             next(P) = NULL;
             prev(P) = NULL;
         }
+
     }
 }
 
-void printInfo(List_parent L) {
-    cout << "==================== Menampilkan Data Customer ==================" << endl
+//MENAMPILKAN DATA PARENT
+void printInfoParent(List_parent L){
+    cout << "==================== Menampilkan Data Costumer ==================" << endl << endl;
     address_parent P = first(L);
     if(listParentEmpty(L)){
         cout << "Maaf tidak ada data";
     }else{
-        P = first(L);
-        while (P != NULL ) {
-            cout <<"ID Customer     : " << info(P).id << endl;
-            cout <<"Nama Customer   : " << info(P).nama << endl;
+        while(P != NULL){
+            cout <<"ID Costumer     : " << info(P).id << endl;
+            cout <<"Nama Costumer   : " << info(P).nama << endl;
             cout <<"Saldo           : " << info(P).saldo << endl;
-            
+
             P = next(P);
         }
-    cout << "=================================================================" endl;
+    cout << "=================================================================" << endl;
     }
 }
 
+//MENCARI ADDRESS SEBUAH ELEMEN MENGUNAKAN INPUT NAMA COSTUMER
 address_parent findElmParent(List_parent L, string X) {
     address_parent P = first(L);
     while(P != NULL){
@@ -120,22 +129,41 @@ address_parent findElmParent(List_parent L, string X) {
         }else{
             P = next(P);
         }
+
     }
     return NULL;
 }
 
+//BERISI PROCEDURE UNTUK CREATE ELEMENT LIST DAN INSERT LAST
+//TUJUAN UNTUK MEMPERSINGKAT PENULISAN PADA MENU
 void inputParent(List_parent &L){
     string ID, namaCostumer;
     int saldo;
 
     address_parent P;
 
-    cout << "===================== Menambah Data Customer ====================" << endl << endl;
-    cout << "ID Customer    : "; cin >> ID; cin.ignore();
-    cout << "Nama Customer  : "; getline(cin, namaCostumer);
+    cout << "===================== Menambah Data Costumer ====================" << endl << endl;
+    cout << "ID Costumer    : "; cin >> ID; cin.ignore();
+    cout << "Nama Costumer  : "; getline(cin, namaCostumer);
     cout << "Saldo          : "; cin >> saldo;
     createParentElmt(P, ID, namaCostumer, saldo);
     insertFirstParent(L, P);
     cout << "=================================================================" << endl;
 
+}
+
+//MENAMPILKAN DATA PARENT HANYA NAMA DAN ID
+void printInfoParentOnlyNameAndId(List_parent L){
+    cout << "==================== Menampilkan Data Costumer ==================" << endl << endl;
+    address_parent P = first(L);
+    if(listParentEmpty(L)){
+        cout << "Maaf tidak ada data";
+    }else{
+        while(P != NULL){
+            cout <<"ID Costumer     : " << info(P).id << endl;
+            cout <<"Nama Costumer   : " << info(P).nama << endl;
+            P = next(P);
+        }
+    cout<< endl << "=================================================================" << endl;
+    }
 }
