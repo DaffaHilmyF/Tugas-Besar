@@ -1,9 +1,14 @@
 #include "relasi.h"
 
+/** LIST RELASI TIPE SINGLE LIST && INSERT LAST **/
+
+
+//MEMBUAT LIST
 void createListRelasi(List_relasi &L) {
     first(L) = NULL;
 }
 
+//MEMBUAT ELEMENT BARU
 void createElemenRelasi(address_parent P, address_child C, address_relasi &Q){
     Q = new elmlist_relasi;
     parent(Q) = P;
@@ -11,7 +16,7 @@ void createElemenRelasi(address_parent P, address_child C, address_relasi &Q){
     next(Q) = NULL;
 }
 
-
+//MENAMBAHKAN DATA KE LIST MENGGUNAKAN INSERT LAST
 void insertLastRelasi(List_relasi &L, address_relasi P){
     if(isEmptyRelasi(L) == true){
         first(L) = P;
@@ -27,7 +32,7 @@ void insertLastRelasi(List_relasi &L, address_relasi P){
     }
 }
 
-
+//MENGECEK LIST RELASI
 bool isEmptyRelasi(List_relasi L){
     if(first(L) == NULL){
         return true;
@@ -37,7 +42,10 @@ bool isEmptyRelasi(List_relasi L){
 
 }
 
+
+//MENGHAPUS ELEMENT PERTAMA PADA LIST
 void deleteFirstRelasi(List_relasi &L, address_relasi &P){
+
     if(isEmptyRelasi(L) == true){
         cout << "Relasi tidak ada" << endl;
         P = NULL;
@@ -53,6 +61,8 @@ void deleteFirstRelasi(List_relasi &L, address_relasi &P){
 
 }
 
+
+//MENGHAPUS ELEMENT YANG BERADA PADA AKHIR LIST
 void deleteLastRelasi(List_relasi &L, address_relasi &P){
     if(isEmptyRelasi(L) == true){
         cout << "Relasi tidak ada" << endl;
@@ -75,9 +85,13 @@ void deleteLastRelasi(List_relasi &L, address_relasi &P){
 }
 
 
+//MENGHAPUS RELASI BERDASARKAN ADDRESS PARENT DAN ADDRESS CHILD YANG TELAH DICARI
+//IMPLEMENTASI DAN MODIFIKASI DARI DELETE AFTER
 void deleteByRelasi(List_relasi &L, address_parent &orgTua, address_child &anak, address_relasi &P){
     address_relasi Prec = findElmRelasi(L, orgTua, anak);
     address_relasi R;
+
+
     address_relasi Q = first(L);
     while(next(Q) != NULL){
         Q = next(Q);
@@ -110,14 +124,17 @@ void deleteByRelasi(List_relasi &L, address_parent &orgTua, address_child &anak,
 
 }
 
+
+//MENAMPILKAN RELASI YANG TELAH ADA BERDASARKAN COSTUMER TERHADAP BARANG
 void showRelationParent(List_relasi R, List_child C, List_parent P){
     string nama;
     address_parent aP;
     address_relasi aR = first(R);
 
-    cout << "Masukan Nama : "; cin.ignore(); getline(cin, nama); cout << endl;
+    printInfoParentOnlyNameAndId(P);
+    cout << endl << "Masukan Nama : "; cin.ignore(); getline(cin, nama); cout << endl;
     aP = findElmParent(P, nama);
-    cout << "Berelasi dengan......" << endl;
+    cout << "Membeli : " ;
     if(aP != NULL){
         while(aR != NULL){
             if(info(parent(aR)).nama == nama){
@@ -130,19 +147,20 @@ void showRelationParent(List_relasi R, List_child C, List_parent P){
         cout << "Tidak ada Relasi" <<endl;
 
     }
-    cout << endl;
+    cout << "\n====================================================================" << endl;
 
 }
 
-
+//MENAMPILKAN RELASI YANG TELAH ADA BERDASARKAN BARANG TERHADAP COSTUMER
 void showRelationChild(List_relasi R, List_child C, List_parent P){
     string nama;
     address_child aC;
     address_relasi aR = first(R);
 
-    cout << "Masukan Nama : "; cin.ignore(); getline(cin, nama); cout << endl;
+    printInfoChildOnlyNameAndId(C);
+    cout << endl << "Masukan Nama : "; cin.ignore(); getline(cin, nama); cout << endl;
     aC= findElmChild_Barang(C, nama);
-    cout << "Berelasi dengan......" << endl;
+    cout << "Dibeli oleh : " ;
     if(aC != NULL){
         while(aR != NULL){
             if(info(child(aR)).nama_Barang == nama){
@@ -155,38 +173,52 @@ void showRelationChild(List_relasi R, List_child C, List_parent P){
         cout << "Tidak ada Relasi" <<endl;
 
     }
-    cout << endl;
+    cout << "\n====================================================================" << endl;
 
 }
 
+
+//MENCARI ADDRESS RELASI DENGAN INPUT PARENT DAN CHILD
 address_relasi findElmRelasi(List_relasi L, address_parent P, address_child C){
     address_relasi Q = first(L);
-    
+
     if(isEmptyRelasi(L) == true){
         cout << "Tidak ada data" << endl;
     }else{
-        while(Q != NULL) {
-            if(parent(Q)==P && child(Q)== C) {
-                return Q;
-            }else{
-                Q = next(Q);
-            }
+    while(Q != NULL) {
+        if(parent(Q)== P && child(Q)== C) {
+            return Q;
+        }else{
+            Q = next(Q);
         }
-    
+
+    }
     return NULL;
+
     }
+
+
+
+
 }
 
+//MENAMPILAN ISI RELASI YANG TELAH DIBUAT
 void printInfoRelasi(List_relasi L) {
-   address_relasi P = first(L);
 
-   cout << "======================= Menampilkan Relasi ======================" << endl << endl;
-    
-   while(P !=NULL) {
-       cout << info(parent(P)).nama << " : " << info(child(P)).nama_Barang << ", ";
-       P = next(P);
-       cout<<endl;
-       
+    address_relasi P = first(L);
+
+
+    cout << "======================= Menampilkan Relasi ======================" << endl << endl;
+    while (P != NULL){
+            cout << info(parent(P)).nama << " : " << info(child(P)).nama_Barang<<", ";
+
+            P = next(P);
+            cout << endl;
+
     }
+
     cout << "=================================================================" << endl;
-}
+    }
+
+
+
