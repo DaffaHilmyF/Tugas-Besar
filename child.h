@@ -45,8 +45,8 @@ address_child findElmChild_Id(List_child L, string x);
 void printTotalGoods(List_child L);
 void printInfoChild(List_child L);
 void inputChild(List_child &L);
+void printInfoChildOnlyNameAndId(List_child L);
 
 
 
 #endif // CHILD_H_INCLUDED
-
