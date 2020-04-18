@@ -15,7 +15,10 @@ address_relasi aR;
 
 
 int main(){
-
+     /** NAMA  : RANA RAMADHANI NUR FITRIANA     1302194100
+                DAFFA HILMY FADHLURROHMAN       1302194004
+        KELAS : SE-43-01
+    **/
 
 
     createListChild(C);
