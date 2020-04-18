@@ -9,6 +9,11 @@ Deskripsi : 	implementasikan multi linked-list yang memodelkan data pembeli
 		dimilikinya. Sedangkan suatu barang bisa dibeli oleh siapapun, selama persedian
 		barang tersebut masih ada.
 =================================================================================================
+Ketika ingin membuat relasi, masuk menu no 1, nanti di check nama yang ada didatabase,
+jika nama tersebut ada pada database maka bisa lanjut membeli(membuat relasi) barang.
+jika nama tersebut tidak ada maka akan diberi pilihan antara membuat akun atau kembali ke menu.
+
+
 Fungsionalitas :
 
 	----------------------------------		        
